@@ -1,12 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:structure_project/app/pages/data/data_table_general.dart';
-import 'package:structure_project/app/pages/data/data_table_vehicle.dart';
-import 'package:http/http.dart' as http;
-import 'package:structure_project/app/pages/data/data_table_week_date.dart';
-import 'package:structure_project/app/pages/forms/forms_controller.dart';
+import 'package:structure_project/app/modules/home/data/data_table_general.dart';
+import 'package:structure_project/app/modules/home/data/data_table_vehicle.dart';
+import 'package:structure_project/app/modules/home/data/data_table_week_date.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -22,9 +17,8 @@ class FormsPage extends StatefulWidget {
 }
 
 class _FormsPageState extends State<FormsPage> {
+  
   final dateController = TextEditingController();
-
-  String _dropdownValue;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +27,6 @@ class _FormsPageState extends State<FormsPage> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.all(8.0),
               child: Column(
                 children: [
                   TextFormField(
@@ -56,7 +49,7 @@ class _FormsPageState extends State<FormsPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(8.0),
+              margin: EdgeInsets.only(bottom: 10.0),
               child: Column(
                 children: [
                   TextFormField(
@@ -78,39 +71,9 @@ class _FormsPageState extends State<FormsPage> {
                 ],
               ),
             ),
+            Container(width: 1200.0, height: 60.0, child: DataTableWeekDate()),
             Container(
-              margin: EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  DropdownButtonFormField<String>(
-                    decoration: InputDecoration(
-                      labelText: "Dia da Semana",
-                      fillColor: Colors.black12,
-                    ),
-                    value: _dropdownValue,
-                    items: <String>[
-                      'Segunda-feira',
-                      'Terça-feira',
-                      'Quarta-feira',
-                      'Quinta-feira',
-                      'Sexta-feira'
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        _dropdownValue = newValue;
-                      });
-                    },
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(8.0),
+              margin: EdgeInsets.only(bottom: 10.0),
               child: Column(
                 children: [
                   TextFormField(
@@ -236,7 +199,7 @@ class _FormsPageState extends State<FormsPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(8.0),
+              margin: EdgeInsets.only(bottom: 10.0),
               child: Column(
                 children: [
                   TextFormField(
@@ -259,7 +222,7 @@ class _FormsPageState extends State<FormsPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(8.0),
+              margin: EdgeInsets.only(bottom: 10.0),
               child: Column(
                 children: [
                   TextFormField(
@@ -282,7 +245,7 @@ class _FormsPageState extends State<FormsPage> {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(8.0),
+              margin: EdgeInsets.only(bottom: 10.0),
               child: Column(children: [
                 TextFormField(
                   keyboardType: TextInputType.number,
@@ -304,7 +267,7 @@ class _FormsPageState extends State<FormsPage> {
               ]),
             ),
             Container(
-              margin: EdgeInsets.all(8.0),
+              margin: EdgeInsets.only(bottom: 10.0),
               child: Column(children: [
                 TextFormField(
                   keyboardType: TextInputType.number,
@@ -326,7 +289,7 @@ class _FormsPageState extends State<FormsPage> {
               ]),
             ),
             Container(
-              margin: EdgeInsets.all(8.0),
+              margin: EdgeInsets.only(bottom: 10.0),
               child: Column(children: [
                 TextFormField(
                   keyboardType: TextInputType.number,
@@ -347,7 +310,7 @@ class _FormsPageState extends State<FormsPage> {
               ]),
             ),
             Container(
-              margin: EdgeInsets.all(8.0),
+              margin: EdgeInsets.only(bottom: 10.0),
               child: Column(children: [
                 TextFormField(
                   keyboardType: TextInputType.number,
@@ -372,6 +335,12 @@ class _FormsPageState extends State<FormsPage> {
                 child: DataTableGeneral(),
               ),
             ),
+            // Container(
+            //     child: Container(
+            //   width: 1200.0,
+            //   height: 500.0,
+            //   child: DataTableWeekDate(),
+            // )),
           ],
         ),
       ),

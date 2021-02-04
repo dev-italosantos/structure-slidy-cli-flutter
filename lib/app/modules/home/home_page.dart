@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:structure_project/app/pages/data/data_table_week_date.dart';
-import 'package:structure_project/app/pages/forms/forms_page.dart';
+
+import 'forms/forms_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -31,13 +31,11 @@ class HomePage extends StatelessWidget {
               Container(
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.grey)),
-                margin: EdgeInsets.all(10.0),
+                //margin: EdgeInsets.all(10.0),
                 padding: const EdgeInsets.fromLTRB(50.0, 30.0, 50.0, 30.0),
                 child: Column(
                   children: <Widget>[
                     Container(
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(5.0, 0.0, 0.0, 10.0),
                         child: Container(
                           child: Column(
                             children: <Widget>[
@@ -190,7 +188,6 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ),
                     Padding(
                       padding: EdgeInsets.only(top: 5.0),
                       child: Center(

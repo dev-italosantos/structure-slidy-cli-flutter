@@ -1,1 +1,1 @@
-const String URL_BASE = 'https://run.mocky.io/v3/';
+const String URL_BASE = 'https://run.mocky.io/v3';

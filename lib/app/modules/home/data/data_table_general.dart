@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:structure_project/app/pages/data/data_table_vehicle.dart';
+import 'package:structure_project/app/modules/home/data/data_table_standard_route.dart';
 import 'data_table_rota_padrao.dart';
 
 class DataTableGeneral extends StatelessWidget {
@@ -33,16 +33,18 @@ class DataTableGeneral extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          height: 300,
+                          height: 300.0,
                           child: TabBarView(
                             children: <Widget>[
                               Container(
+                                height: 500.0,
                                 color: Colors.grey[350],
-                                child: DataTableRotaPadrao(),
+                                child: DataTableStandardRoute(),
                               ),
                               Container(
+                                height: 500.0,
                                 color: Colors.grey[350],
-                                child: DataTableVehicle(),
+                                child: DataTableRotaPadrao(),
                               ),
                             ],
                           ),
@@ -81,7 +83,7 @@ class DataTableGeneral extends StatelessWidget {
             Row(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.all(15.0),
+                  padding: EdgeInsets.only(top: 15.0),
                   child: Container(
                     width: 130.0,
                     height: 30.0,
@@ -98,8 +100,8 @@ class DataTableGeneral extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: Container(
+                  padding: EdgeInsets.only(top: 15.0, left: 10.0),
+                 child: Container(
                     width: 130.0,
                     height: 30.0,
                     child: RaisedButton(
@@ -110,7 +112,7 @@ class DataTableGeneral extends StatelessWidget {
                         ),
                         color: Colors.grey[350]),
                   ),
-                ),
+                 ),
               ],
             ),
           ],

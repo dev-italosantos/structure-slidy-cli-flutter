@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:structure_project/app/pages/forms/forms_controller.dart';
+import 'package:structure_project/app/modules/home/forms/forms_controller.dart';
 
 class DataTableVehicle extends StatefulWidget {
   @override
@@ -75,6 +75,12 @@ class _DataTableVehicleState extends State<DataTableVehicle> {
                   ],
                   rows: list
                       .map((data) => DataRow(
+                        onSelectChanged: (b){
+                            print(data.code + "|" + "|" + data.name +
+                              "|" + data.modelo + "|" + data.tipo +
+                              "|" + data.motivo_baixa + "|" + data.placa +
+                              "|" + data.ano + "|" + data.chassi + "|" + data.data_baixa + "|" + data.centro_custo);
+                          },
                             cells: [
                               DataCell(Text(data.code)),
                               DataCell(Text(data.name)),
