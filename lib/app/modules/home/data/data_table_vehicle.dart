@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:structure_project/app/modules/home/forms/forms_controller.dart';
+import 'package:structure_project/app/shared/models/vehicle_model.dart';
 
 class DataTableVehicle extends StatefulWidget {
   @override
@@ -11,6 +12,25 @@ class DataTableVehicle extends StatefulWidget {
 
 class _DataTableVehicleState extends State<DataTableVehicle> {
   final formsController = Modular.get<FormsController>();
+  
+  List<VehicleModel> selectedVehicle;
+  
+  @override
+  void initState() {
+    selectedVehicle = [];
+    super.initState();
+  }
+
+  onSelectRow(bool selected, VehicleModel data) async {
+    setState(() {
+      if (selected) {
+        selectedVehicle.add(data);
+      } else {
+        selectedVehicle.remove(data);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,14 +95,15 @@ class _DataTableVehicleState extends State<DataTableVehicle> {
                   ],
                   rows: list
                       .map((data) => DataRow(
-                        onSelectChanged: (b){
-                            print(data.code + "|" + "|" + data.name +
-                              "|" + data.modelo + "|" + data.tipo +
-                              "|" + data.motivo_baixa + "|" + data.placa +
-                              "|" + data.ano + "|" + data.chassi + "|" + data.data_baixa + "|" + data.centro_custo);
-                          },
+                            selected: selectedVehicle.contains(data),
+                            onSelectChanged: (b) {
+                              print("Onselect");
+                              onSelectRow(b, data).toString();
+                            },
                             cells: [
-                              DataCell(Text(data.code)),
+                              DataCell(Text(data.code), onTap: () {
+                                print('Select ${data.code}');
+                              }),
                               DataCell(Text(data.name)),
                               DataCell(Text(data.modelo)),
                               DataCell(Text(data.tipo)),
